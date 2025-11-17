@@ -1,0 +1,11 @@
+<div *ngIf="current" class="notification" [ngClass]="tipoToClass(current.tipo)">
+  <div class="content">
+    <strong *ngIf="current.tipo === TipoNotificacion.exito">OK</strong>
+    <strong *ngIf="current.tipo === TipoNotificacion.alerta">Alerta</strong>
+    <strong *ngIf="current.tipo === TipoNotificacion.error">Error</strong>
+    <strong *ngIf="current.tipo === TipoNotificacion.info">Información</strong>
+
+    <span class="mensaje">{{ current.mensaje }}</span>
+  </div>
+  <button class="close" (click)="close()">✕</button>
+</div>

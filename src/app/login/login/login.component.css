@@ -1,0 +1,102 @@
+:root{
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --accent: #1976d2;
+}
+
+.login-wrapper{
+  min-height: 100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 2rem;
+  background: radial-gradient(circle at 10% 10%, #eef6ff, #f5f7fb 40%);
+}
+
+.card{
+  width: 100%;
+  max-width: 420px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), var(--card));
+  padding: 1.6rem 1.6rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(16,24,40,0.12);
+}
+
+.hero{
+  width:92px;
+  height:92px;
+  object-fit:cover;
+  border-radius: 50%;
+  margin: 0 auto 0.6rem;
+  display:block;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.logo-container{
+  text-align:center;
+  margin-bottom: 0.6rem;
+}
+
+.logo-container h2{ margin: 0.4rem 0 0; font-size:1.2rem; color: #153A5B }
+.logo-container .subtitle{ margin: 0; color:#6b7280; font-size:0.9rem }
+
+.field{
+  margin-bottom: 0.9rem;
+}
+
+.field label{
+  display:block;
+  font-size:0.85rem;
+  margin-bottom:0.25rem;
+}
+
+.field input{
+  width:90%;
+  padding:0.8rem 0.9rem;
+  border-radius:10px;
+  border:1px solid #e6eef8;
+  background: #fbfdff;
+  transition: box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.field input:focus{
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(25,118,210,0.08);
+}
+
+.options{ display:flex; justify-content:space-between; align-items:center; margin-top:0.2rem; margin-bottom:0.6rem }
+.options .remember{ font-size:0.9rem; color:#374151 }
+.options .remember input{ margin-right:0.35rem }
+.options .forgot{ font-size:0.9rem; color:var(--accent); text-decoration:none }
+
+.actions{ text-align: right; margin-top: 0.6rem }
+
+.actions .primary{
+  width:100%;
+  /* background: linear-gradient(90deg,var(--accent), #0e5bb8); */
+  background: #8fbffa;
+  color: rgb(5, 5, 5);
+  border: none;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  cursor:pointer;
+  box-shadow: 0 8px 22px rgba(25,118,210,0.12);
+  font-weight:600;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.actions .primary:active{ transform: translateY(1px) }
+
+.actions .primary[disabled]{ opacity: 0.6; cursor: default }
+
+.error{
+  color: #b00020;
+  margin-top: 0.6rem;
+  text-align:center;
+}
+
+@media (max-width: 420px){
+  .card{ padding: 1.2rem; border-radius:10px }
+  .hero{ width:72px; height:72px }
+}

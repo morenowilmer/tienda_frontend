@@ -1,0 +1,33 @@
+<div class="app-shell">
+  <nav class="topbar">
+    <div class="left">
+      <img class="logo" src="assets/imgs/MiTienda.png" alt="Mi Tienda" />
+      <div class="brand">
+        <div class="app-name">Bienvenido</div>
+        <div class="user-name" *ngIf="nombreUsuario">{{ nombreUsuario }}</div>
+      </div>
+    </div>
+
+    <ul class="menu">
+      <li class="menu-item has-sub">
+        <span class="menu-title">Administrar</span>
+        <ul class="submenu">
+          <li>Persona</li>
+          <li>Usuario</li>
+        </ul>
+      </li>
+      <li class="menu-item">Categoría producto</li>
+      <li class="menu-item">Productos</li>
+      <li class="menu-item">Venta</li>
+      <li class="menu-item">Factura</li>
+    </ul>
+
+    <div class="right">
+      <button class="logout" (click)="logout()">Cerrar sesión ➜</button>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h2>Bienvenido a Mi tienda, {{ nombreUsuario }}</h2>
+  </main>
+</div>

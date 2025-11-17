@@ -1,0 +1,28 @@
+.notification{
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  min-width: 260px;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  color: white;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  display:flex;
+  align-items:center;
+  gap: 0.6rem;
+  z-index: 1000;
+}
+
+.notification .content{ flex:1 }
+.notification .mensaje{ margin-left:0.5rem }
+.notification .close{
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.notification.exito{ background: #2e7d32; }
+.notification.alerta{ background: #f57f17; }
+.notification.error{ background: #c62828; }
+.notification.info{ background: #1565c0; }

@@ -1,0 +1,152 @@
+.home {
+    padding: 2rem;
+}
+
+.home h2 {
+    margin-bottom: 0.5rem
+}
+
+.home button {
+    margin-top: 1rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    background: #1976d2;
+    color: white;
+    border: none;
+}
+
+.app-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 1rem;
+    background: linear-gradient(90deg, #8fbffa 0%, #6fb0ff 100%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    color: #07243a;
+}
+
+.topbar .left {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px
+}
+
+.brand .app-name {
+    font-weight: 700;
+    color: #153A5B
+}
+
+.logout {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 0.42rem 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #07243a;
+    font-weight: 600;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+.logout:hover {
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(7, 36, 58, 0.12);
+    transform: translateY(-3px);
+}
+
+.brand .user-name {
+    font-size: 0.9rem;
+    font-family: Arial Black;
+    color: #f0f2f5
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.submenu, .menu ul { list-style: none; margin: 0; padding: 0 }
+
+.menu-item {
+    position: relative;
+    padding: 0.45rem 0.75rem;
+    cursor: pointer;
+    color: #07243a;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.has-sub .submenu {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: calc(100% + 6px);
+    background: #ffffff;
+    border: 1px solid #e6eef8;
+    padding: 0.3rem;
+    border-radius: 8px;
+    box-shadow: 0 12px 30px rgba(10, 20, 40, 0.12);
+    min-width: 160px;
+}
+
+.has-sub:hover .submenu {
+    display: block
+}
+
+.submenu li {
+    padding: 0.4rem 0.8rem;
+    color: #0f172a;
+    white-space: nowrap
+}
+
+.submenu li:hover {
+    background: #f3f9ff;
+    border-radius: 6px
+}
+
+.menu {
+    background: transparent
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 1rem
+}
+
+.logout {
+    background: transparent;
+    border: 1px solid #4595f7;
+    padding: 0.42rem 0.6rem;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.content {
+    padding: 1.6rem
+}
+
+@media (max-width:800px) {
+    .menu {
+        display: none
+    }
+}

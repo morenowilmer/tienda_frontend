@@ -1,0 +1,32 @@
+<div class="login-wrapper">
+	<div class="card">
+			<div class="logo-container">
+				<img class="hero" src="assets/imgs/MiTienda.png" alt="Imagen de la tienda">
+				<h2>Mi Tienda</h2>
+				<p class="subtitle">Inicia sesión para continuar</p>
+			</div>
+
+			<form [formGroup]="form" (ngSubmit)="onSubmit()">
+				<div class="field">
+					<label for="usuario">Usuario</label>
+					<input id="usuario" type="text" formControlName="usuario" placeholder="ej. juan.perez" autocomplete="username" />
+				</div>
+
+				<div class="field">
+					<label for="contrasena">Contraseña</label>
+					<input id="contrasena" type="password" formControlName="contrasena" placeholder="Contraseña" autocomplete="current-password" />
+				</div>
+
+				<!-- <div class="options">
+					<label class="remember"><input type="checkbox" /> Recuérdame</label>
+					<a class="forgot" href="#">¿Olvidaste la contraseña?</a>
+				</div> -->
+
+				<div class="actions">
+					<button class="primary" type="submit" [disabled]="loading">{{ loading ? 'Ingresando...' : 'Iniciar sesión' }}</button>
+				</div>
+
+				<!-- <div class="error" *ngIf="error">{{ error }}</div> -->
+			</form>
+	</div>
+</div>
