@@ -5,6 +5,10 @@ import { PersonaRegisterComponent } from '../persona/registar/persona-register.c
 import { PersonaEditComponent } from '../persona/editar/persona-edit.component';
 import { UsuarioRegisterComponent } from '../usuario/registar/usuario-register.component';
 import { UsuarioEditComponent } from '../usuario/editar/usuario-edit.component';
+import { CategoriaRegistrarComponent } from '../categoria/registrar/categoria-registrar.component';
+import { CategoriaEditComponent } from '../categoria/editar/categoria-edit.component';
+import { ProductoRegistrarComponent } from '../producto/registrar/producto-registrar.component';
+import { ProductoEditComponent } from '../producto/editar/producto-edit.component';
 import { Router } from '@angular/router';
 import { NotificationService } from '../core/services/notification.service';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,18 +16,22 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 @Component({
   standalone: true,
   selector: 'app-home',
-  imports: [CommonModule, PersonaRegisterComponent, PersonaEditComponent, UsuarioRegisterComponent, UsuarioEditComponent],
+  imports: [CommonModule, PersonaRegisterComponent, PersonaEditComponent, UsuarioRegisterComponent, UsuarioEditComponent, 
+    CategoriaRegistrarComponent, CategoriaEditComponent, ProductoRegistrarComponent, ProductoEditComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
   nombreUsuario: string | null = null;
   openMenu: string | null = null;
-  showPersonaRegister = false;
-  showPersonaEdit = false;
-  showUsuarioRegister = false;
-  showUsuarioEdit = false;
-  usuarioToEdit: any = null;
+  showPersonaRegistrar = false;
+  showPersonaEditar = false;
+  showUsuarioRegistrar = false;
+  showUsuarioEditar = false;
+  showCategoriaRegistrar = false;
+  showCategoriaEditar = false;
+  showProductoRegistrar = false;
+  showProductoEditar = false;
 
   constructor(
     private router: Router,
@@ -45,24 +53,91 @@ export class HomeComponent implements OnInit {
   }
 
   openPersonaRegistrar(): void {
-    this.showPersonaRegister = true;
-    this.showPersonaEdit = false;
+    this.showPersonaRegistrar = true;
+    this.showPersonaEditar = false;
+    this.showUsuarioEditar = false;
+    this.showUsuarioRegistrar = false;
+    this.showCategoriaRegistrar = false;
+    this.showCategoriaEditar = false;
+    this.showProductoEditar = false;
+    this.showProductoRegistrar = false;
   }
 
   openPersonaEditar(): void {
-    this.showPersonaEdit = true;
-    this.showPersonaRegister = false;
+    this.showPersonaEditar = true;
+    this.showPersonaRegistrar = false;
+    this.showUsuarioEditar = false;
+    this.showUsuarioRegistrar = false;
+    this.showCategoriaRegistrar = false;
+    this.showCategoriaEditar = false;
+    this.showProductoEditar = false;
+    this.showProductoRegistrar = false;
   }
 
   openUsuarioRegistrar(): void {
-    this.showUsuarioRegister = true;
-    this.showUsuarioEdit = false;
+    this.showUsuarioRegistrar = true;
+    this.showUsuarioEditar = false;
+    this.showPersonaEditar = false;
+    this.showPersonaRegistrar = false;
+    this.showCategoriaRegistrar = false;
+    this.showCategoriaEditar = false;
+    this.showProductoEditar = false;
+    this.showProductoRegistrar = false;
   }
 
-  openUsuarioEditar(usuario?: any): void {
-    this.usuarioToEdit = usuario ?? null;
-    this.showUsuarioEdit = true;
-    this.showUsuarioRegister = false;
+  openUsuarioEditar(): void {
+    this.showUsuarioEditar = true;
+    this.showUsuarioRegistrar = false;
+    this.showPersonaEditar = false;
+    this.showPersonaRegistrar = false;
+    this.showCategoriaRegistrar = false;
+    this.showCategoriaEditar = false;
+    this.showProductoEditar = false;
+    this.showProductoRegistrar = false;
+  }
+
+  openCategoriaRegistrar(): void {
+    this.showCategoriaRegistrar = true;
+    this.showCategoriaEditar = false;
+    this.showUsuarioEditar = false;
+    this.showUsuarioRegistrar = false;
+    this.showPersonaEditar = false;
+    this.showPersonaRegistrar = false;
+    this.showProductoEditar = false;
+    this.showProductoRegistrar = false;
+  }
+
+  openCategoriaEditar(): void {
+    this.showCategoriaEditar = true;
+    this.showCategoriaRegistrar = false;
+    this.showUsuarioEditar = false;
+    this.showUsuarioRegistrar = false;
+    this.showPersonaEditar = false;
+    this.showPersonaRegistrar = false;
+    this.showProductoEditar = false;
+    this.showProductoRegistrar = false;
+  }
+
+  openProductoRegistrar(): void {
+    this.showProductoRegistrar = true;
+    this.showProductoEditar = false;
+    this.showUsuarioEditar = false;
+    this.showUsuarioRegistrar = false;
+    this.showPersonaEditar = false;
+    this.showPersonaRegistrar = false;
+    this.showCategoriaRegistrar = false;
+    this.showCategoriaEditar = false;
+  }
+
+  openProductoEditar(): void {
+    this.showProductoEditar = true;
+    this.showProductoRegistrar = false;
+    this.showUsuarioEditar = false;
+    this.showUsuarioRegistrar = false;
+    this.showPersonaEditar = false;
+    this.showPersonaRegistrar = false;
+    this.showCategoriaRegistrar = false;
+    this.showCategoriaEditar = false;
   }
 
   toggleMenu(menu: string, event: MouseEvent): void {
@@ -74,28 +149,48 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  onPersonaSaved(payload: any): void {
-    console.log('Persona guardada', payload);
+  onPersonaSaved(): void {
     this.notificationService.showExito('Persona guardada correctamente');
-    this.showPersonaRegister = false;
-    this.showPersonaEdit = false;
+    this.showPersonaRegistrar = false;
+    this.showPersonaEditar = false;
   }
 
-  onUsuarioSaved(payload: any): void {
-    console.log('Usuario guardado', payload);
+  onUsuarioSaved(): void {
     this.notificationService.showExito('Usuario guardado correctamente');
-    this.showUsuarioRegister = false;
-    this.showUsuarioEdit = false;
+    this.showUsuarioRegistrar = false;
+    this.showUsuarioEditar = false;
+  }
+
+  onCategoriaSaved(): void {
+    this.notificationService.showExito('Categoría guardada correctamente');
+    this.showCategoriaRegistrar = false;
+    this.showCategoriaEditar = false;
+  }
+
+  onProductoSaved(payload: any): void {
+    this.notificationService.showExito('Producto guardado/actualizado correctamente');
+    this.showProductoRegistrar = false;
+    this.showProductoEditar = false;
   }
 
   onUsuarioCancel(): void {
-    this.showUsuarioRegister = false;
-    this.showUsuarioEdit = false;
+    this.showUsuarioRegistrar = false;
+    this.showUsuarioEditar = false;
   }
 
   onPersonaCancel(): void {
-    this.showPersonaRegister = false;
-    this.showPersonaEdit = false;
+    this.showPersonaRegistrar = false;
+    this.showPersonaEditar = false;
+  }
+
+  onCategoriaCancel(): void {
+    this.showCategoriaRegistrar = false;
+    this.showCategoriaEditar = false;
+  }
+
+  onProductoCancel(): void {
+    this.showProductoRegistrar = false;
+    this.showProductoEditar = false;
   }
 
   logout(): void {

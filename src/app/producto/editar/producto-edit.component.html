@@ -1,0 +1,87 @@
+<section class="producto-area">
+  <h3>Consultar Categoría</h3>
+  <form [formGroup]="formularioConsulta" (ngSubmit)="onConsultar()" class="producto-form">
+    <div class="row">
+      <div class="field">
+        <label>Nombre</label>
+        <input type="text" formControlName="nombre" placeholder="Ingrese al menos 3 letras para buscar" />
+        <div class="search-results" *ngIf="productosEncontrados && productosEncontrados.length > 0">
+          <ul class="results-list">
+            <li *ngFor="let c of productosEncontrados" class="result-item" (click)="onSeleccionarCategoria(c.id); $event.stopPropagation()">
+              <strong>{{ c.nombre }}</strong><span *ngIf="c.descripcion"> - {{ c.descripcion }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
+<br>
+<section class="producto-area">
+  <h3>Editar Producto</h3>
+  <form [formGroup]="formularioProducto" (ngSubmit)="onGuardar()" class="producto-form">
+    <div class="row">
+      <div class="field">
+        <label>Nombre</label>
+        <input formControlName="nombre" />
+      </div>
+      <div class="field">
+        <label>Categoría</label>
+        <select formControlName="idCategoria">
+          <option value="">-- Seleccione --</option>
+          <option *ngFor="let c of categorias" [value]="c.id">{{ c.nombre }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Descripción</label>
+        <textarea formControlName="descripcion"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Cantidad</label>
+        <input type="number" formControlName="cantidad" />
+      </div>
+      <div class="field">
+        <label>Código de barras</label>
+        <input formControlName="codigoBarras" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Precio compra</label>
+        <input type="number" formControlName="precioCompra" step="0.01" />
+      </div>
+      <div class="field">
+        <label>Precio venta</label>
+        <input type="number" formControlName="precioVenta" step="0.01" />
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary">Guardar</button>
+      <button type="button" class="btn" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+
+  <hr />
+  <section class="inventario-area">
+    <h4>Agregar inventario</h4>
+    <form [formGroup]="agregarInvForm" (ngSubmit)="onAgregarInventario()" class="inv-form">
+      <div class="row">
+        <div class="field">
+          <label>Cantidad a agregar</label>
+          <input type="number" formControlName="cantidadAgregar" min="1" />
+        </div>
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn primary">Agregar</button>
+      </div>
+    </form>
+  </section>
+</section>

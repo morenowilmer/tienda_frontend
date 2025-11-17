@@ -1,4 +1,4 @@
-.usuario-area {
+.categoria-area {
     margin-top: 1rem;
     background: #fff;
     border: 1px solid #e6eef8;
@@ -6,31 +6,36 @@
     border-radius: 8px
 }
 
-.usuario-form .row {
+.categoria-form .row {
     display: flex;
     gap: 1rem;
     margin-bottom: 0.8rem
 }
 
-.usuario-form .field {
+.categoria-form .field {
     flex: 1 1 0;
     display: flex;
     flex-direction: column
 }
 
-.usuario-form label {
+.categoria-form label {
     font-weight: 600;
     margin-bottom: 0.2rem
 }
 
-.usuario-form input,
-.usuario-form select {
+.categoria-form input,
+.categoria-form textarea {
     padding: 0.45rem 0.6rem;
     border: 1px solid #d7e7fb;
-    border-radius: 6px;
+    border-radius: 6px
 }
 
-.usuario-form .error {
+.categoria-form textarea {
+    min-height: 80px;
+    resize: vertical
+}
+
+.categoria-form .error {
     color: #c62828;
     font-size: 0.85rem;
     margin-top: 0.25rem

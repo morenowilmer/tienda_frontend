@@ -26,4 +26,9 @@ private apiUrl = environment.urlApi;
   tiposDocumentos(): Observable<ApiResponse<TipoDocumento[]>> {
     return this.http.get<ApiResponse<TipoDocumento[]>>(`${this.apiUrl}/persona/tipos-documentos`);
   }
+
+  consultarPersonaPorId(idPersona: number): Observable<ApiResponse<Persona>> {
+    const url = `${this.apiUrl}/persona/id/${idPersona}`;
+    return this.http.get<ApiResponse<Persona>>(url);
+  }
 }

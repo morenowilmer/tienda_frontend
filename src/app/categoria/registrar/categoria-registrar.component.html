@@ -1,0 +1,30 @@
+<section class="categoria-area">
+  <h3>Registrar Categoría</h3>
+  <form [formGroup]="categoriaForm" (ngSubmit)="onGuardar()" class="categoria-form">
+    <div class="row">
+      <div class="field">
+        <label>Nombre</label>
+        <input type="text" formControlName="nombre" placeholder="Nombre de la categoría" />
+        <div class="error" *ngIf="f['nombre'].touched && f['nombre'].invalid">
+          <div *ngIf="f['nombre'].errors?.['required']">El nombre es obligatorio.</div>
+          <div *ngIf="f['nombre'].errors?.['maxlength']">Máximo 70 caracteres.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Descripción</label>
+        <textarea formControlName="descripcion" placeholder="Descripción (opcional)"></textarea>
+        <div class="error" *ngIf="f['descripcion'].touched && f['descripcion'].invalid">
+          <div *ngIf="f['descripcion'].errors?.['maxlength']">Máximo 250 caracteres.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary">Registrar</button>
+      <button type="button" class="btn" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</section>
