@@ -1,0 +1,9 @@
+.usuario-area { margin-top:1rem; background:#fff; border:1px solid #e6eef8; padding:1rem; border-radius:8px }
+.usuario-form .row { display:flex; gap:1rem; margin-bottom:0.8rem }
+.usuario-form .field { flex:1 1 0; display:flex; flex-direction:column }
+.usuario-form label { font-weight:600; margin-bottom:0.2rem }
+.usuario-form input { padding:0.45rem 0.6rem; border:1px solid #d7e7fb; border-radius:6px }
+.usuario-form .error { color:#c62828; font-size:0.85rem; margin-top:0.25rem }
+.actions { margin-top:0.6rem; display:flex; gap:0.6rem }
+.btn { padding:0.5rem 0.8rem; border-radius:6px; border:1px solid #d0e6ff; background:#f3f9ff; cursor:pointer }
+.btn.primary { background:#1273e6; color:#fff; border:none }

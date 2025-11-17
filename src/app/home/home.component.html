@@ -9,15 +9,34 @@
     </div>
 
     <ul class="menu">
-      <li class="menu-item has-sub">
-        <span class="menu-title">Administrar</span>
-        <ul class="submenu">
-          <li>Persona</li>
-          <li>Usuario</li>
+      <li class="menu-item has-sub" [class.open]="openMenu === 'persona'">
+        <span class="menu-title" (click)="toggleMenu('persona', $event)">Persona</span>
+        <ul class="submenu" *ngIf="openMenu === 'persona'">
+          <li (click)="openPersonaRegistrar(); $event.stopPropagation()">Registrar</li>
+          <li (click)="openPersonaEditar(); $event.stopPropagation()">Editar</li>
         </ul>
       </li>
-      <li class="menu-item">Categoría producto</li>
-      <li class="menu-item">Productos</li>
+      <li class="menu-item has-sub" [class.open]="openMenu === 'usuario'">
+        <span class="menu-title" (click)="toggleMenu('usuario', $event)">Usuario</span>
+        <ul class="submenu" *ngIf="openMenu === 'usuario'">
+          <li (click)="openUsuarioRegistrar(); $event.stopPropagation()">Crear</li>
+          <li (click)="openUsuarioEditar(); $event.stopPropagation()">Editar</li>
+        </ul>
+      </li>
+      <li class="menu-item has-sub">
+        <span class="menu-title">Categoría producto</span>
+        <ul class="submenu">
+          <li>Crear</li>
+          <li>Editar</li>
+        </ul>
+      </li>
+      <li class="menu-item has-sub">
+        <span class="menu-title">Productos</span>
+        <ul class="submenu">
+          <li>Crear</li>
+          <li>Editar</li>
+        </ul>
+      </li>
       <li class="menu-item">Venta</li>
       <li class="menu-item">Factura</li>
     </ul>
@@ -29,5 +48,25 @@
 
   <main class="content">
     <h2>Bienvenido a Mi tienda, {{ nombreUsuario }}</h2>
+    <app-persona-register *ngIf="showPersonaRegister"
+      (saved)="onPersonaSaved($event)"
+      (cancel)="onPersonaCancel()">
+    </app-persona-register>
+
+    <app-persona-edit *ngIf="showPersonaEdit"
+      (saved)="onPersonaSaved($event)"
+      (cancel)="onPersonaCancel()">
+    </app-persona-edit>
+    
+    <app-usuario-register *ngIf="showUsuarioRegister"
+      (saved)="onUsuarioSaved($event)"
+      (cancel)="onUsuarioCancel()">
+    </app-usuario-register>
+
+    <app-usuario-edit *ngIf="showUsuarioEdit"
+      [usuario]="usuarioToEdit"
+      (saved)="onUsuarioSaved($event)"
+      (cancel)="onUsuarioCancel()">
+    </app-usuario-edit>
   </main>
 </div>

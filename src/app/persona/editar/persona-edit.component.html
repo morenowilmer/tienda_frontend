@@ -1,0 +1,136 @@
+<section class="persona-area">
+  <h3>Editar Persona</h3>
+  <form [formGroup]="formularioBusqueda" (ngSubmit)="onBuscarPersona()" class="persona-form">
+    <div class="row">
+      <div class="field">
+        <label>Tipo de documento</label>
+        <select formControlName="tipoDocumento">
+          <option value="">-- Seleccione --</option>
+          <option *ngFor="let tipoDoc of tiposDocumento" [value]="tipoDoc.id">{{ tipoDoc.nombre }}</option>
+        </select>
+        <div class="error" *ngIf="f['tipoDocumento'].touched && f['tipoDocumento'].invalid">
+          <div *ngIf="f['tipoDocumento'].errors?.['required']">Seleccione un tipo de documento.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Identificación</label>
+        <input type="text" formControlName="identificacion" placeholder="Número de identificación" />
+        <div class="error" *ngIf="f['identificacion'].touched && f['identificacion'].invalid">
+          <div *ngIf="f['identificacion'].errors?.['required']">La identificación es obligatoria.</div>
+          <div *ngIf="f['identificacion'].errors?.['maxlength']">Máximo 30 caracteres.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary">Buscar</button>
+      <button type="button" class="btn" (click)="onLimpiar()">Limpiar</button>
+    </div>
+  </form>
+</section>
+
+<section class="persona-area">
+  <form [formGroup]="formularioPersona" (ngSubmit)="onActualizarPersona()" class="persona-form">
+    <div class="row">
+      <div class="field">
+        <label>Nombre</label>
+        <input type="text" formControlName="nombre" placeholder="Nombre" />
+        <div class="error" *ngIf="f['nombre'].touched && f['nombre'].invalid">
+          <div *ngIf="f['nombre'].errors?.['required']">El nombre es obligatorio.</div>
+          <div *ngIf="f['nombre'].errors?.['maxlength']">Máximo 30 caracteres.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Apellido</label>
+        <input type="text" formControlName="apellido" placeholder="Apellido" />
+        <div class="error" *ngIf="f['apellido'].touched && f['apellido'].invalid">
+          <div *ngIf="f['apellido'].errors?.['required']">El apellido es obligatorio.</div>
+          <div *ngIf="f['apellido'].errors?.['maxlength']">Máximo 30 caracteres.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Tipo de documento</label>
+        <select formControlName="tipoDocumento">
+          <option value="">-- Seleccione --</option>
+          <option *ngFor="let tipoDoc of tiposDocumento" [value]="tipoDoc.id">{{ tipoDoc.nombre }}</option>
+        </select>
+        <div class="error" *ngIf="f['tipoDocumento'].touched && f['tipoDocumento'].invalid">
+          <div *ngIf="f['tipoDocumento'].errors?.['required']">Seleccione un tipo de documento.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Identificación</label>
+        <input type="text" formControlName="identificacion" placeholder="Número de identificación" />
+        <div class="error" *ngIf="f['identificacion'].touched && f['identificacion'].invalid">
+          <div *ngIf="f['identificacion'].errors?.['required']">La identificación es obligatoria.</div>
+          <div *ngIf="f['identificacion'].errors?.['pattern']">Formato inválido.</div>
+          <div *ngIf="f['identificacion'].errors?.['maxlength']">Máximo 30 caracteres.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Correo</label>
+        <input type="email" formControlName="correo" placeholder="correo@ejemplo.com" />
+        <div class="error" *ngIf="f['correo'].touched && f['correo'].invalid">
+          <div *ngIf="f['correo'].errors?.['required']">El correo es obligatorio.</div>
+          <div *ngIf="f['correo'].errors?.['email']">Ingrese un correo válido.</div>
+          <div *ngIf="f['correo'].errors?.['maxlength']">Máximo 60 caracteres.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Celular</label>
+        <input type="text" formControlName="celular" placeholder="3002006090" />
+        <div class="error" *ngIf="f['celular'].touched && f['celular'].invalid">
+          <div *ngIf="f['celular'].errors?.['required']">El celular es obligatorio.</div>
+          <div *ngIf="f['celular'].errors?.['pattern']">Ingrese un celular válido.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Fecha de nacimiento</label>
+        <input type="text" formControlName="fechaNacimiento" placeholder="dd/MM/yyyy" />
+        <div class="error" *ngIf="f['fechaNacimiento'].touched && f['fechaNacimiento'].invalid">
+          <div *ngIf="f['fechaNacimiento'].errors?.['required']">La fecha de nacimiento es obligatoria.</div>
+          <div *ngIf="f['fechaNacimiento'].errors?.['pattern']">Formato debe ser dd/MM/yyyy.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Departamento</label>
+        <input type="text" formControlName="departamento" placeholder="Departamento" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Ciudad</label>
+        <input type="text" formControlName="ciudad" placeholder="Ciudad" />
+      </div>
+
+      <div class="field">
+        <label>Dirección</label>
+        <input type="text" formControlName="direccion" placeholder="Dirección" />
+        <div class="error" *ngIf="f['direccion'].touched && f['direccion'].invalid">
+          <div *ngIf="f['direccion'].errors?.['required']">La dirección es obligatoria.</div>
+          <div *ngIf="f['direccion'].errors?.['maxlength']">Máximo 200 caracteres.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary">Guardar</button>
+      <button type="button" class="btn" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</section>

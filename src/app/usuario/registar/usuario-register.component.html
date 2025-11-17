@@ -1,0 +1,40 @@
+<section class="usuario-area">
+  <h3>Crear Usuario</h3>
+  <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()" class="usuario-form">
+    <div class="row">
+      <div class="field">
+        <label>Usuario</label>
+        <input type="text" formControlName="username" placeholder="Usuario" />
+        <div class="error" *ngIf="f['username'].touched && f['username'].invalid">
+          <div *ngIf="f['username'].errors?.['required']">El nombre de usuario es obligatorio.</div>
+          <div *ngIf="f['username'].errors?.['maxlength']">Máximo 40 caracteres.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Correo</label>
+        <input type="email" formControlName="email" placeholder="correo@ejemplo.com" />
+        <div class="error" *ngIf="f['email'].touched && f['email'].invalid">
+          <div *ngIf="f['email'].errors?.['required']">El correo es obligatorio.</div>
+          <div *ngIf="f['email'].errors?.['email']">Ingrese un correo válido.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" formControlName="password" placeholder="Contraseña" />
+        <div class="error" *ngIf="f['password'].touched && f['password'].invalid">
+          <div *ngIf="f['password'].errors?.['required']">La contraseña es obligatoria.</div>
+          <div *ngIf="f['password'].errors?.['minlength']">Mínimo 6 caracteres.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary">Crear</button>
+      <button type="button" class="btn" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</section>
