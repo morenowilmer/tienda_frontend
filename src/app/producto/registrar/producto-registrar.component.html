@@ -1,0 +1,71 @@
+<section class="producto-area">
+  <h3>Registrar Producto</h3>
+  <form [formGroup]="formularioProducto" (ngSubmit)="onRegistrar()" class="producto-form">
+    <div class="row">
+      <div class="field">
+        <label>Nombre</label>
+        <input formControlName="nombre" placeholder="Nombre del producto" />
+        <div class="error" *ngIf="f['nombre'].touched && f['nombre'].invalid">
+          <div *ngIf="f['nombre'].errors?.['required']">El nombre es obligatorio.</div>
+          <div *ngIf="f['nombre'].errors?.['maxlength']">Máximo 70 caracteres.</div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Categoría</label>
+        <select formControlName="idCategoria">
+          <option value="">-- Seleccione --</option>
+          <option *ngFor="let c of categorias" [value]="c.id">{{ c.nombre }}</option>
+        </select>
+        <div class="error" *ngIf="f['idCategoria'].touched && f['idCategoria'].invalid">
+          <div *ngIf="f['idCategoria'].errors?.['required']">La categoría es obligatoria.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Descripción</label>
+        <textarea formControlName="descripcion"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Cantidad inicial</label>
+        <input type="number" formControlName="cantidad" />
+        <div class="error" *ngIf="f['cantidad'].touched && f['cantidad'].invalid">
+          <div *ngIf="f['cantidad'].errors?.['required']">La cantidad es obligatoria.</div>
+          <div *ngIf="f['cantidad'].errors?.['min']">Mínimo 0.</div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Código de barras</label>
+        <input formControlName="codigoBarras" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Precio compra</label>
+        <input type="number" formControlName="precioCompra" step="0.01" />
+        <div class="error" *ngIf="f['precioCompra'].touched && f['precioCompra'].invalid">
+          <div *ngIf="f['precioCompra'].errors?.['required']">El precio de compra es obligatorio.</div>
+          <div *ngIf="f['precioCompra'].errors?.['min']">Mínimo 0.</div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Precio venta</label>
+        <input type="number" formControlName="precioVenta" step="0.01" />
+        <div class="error" *ngIf="f['precioVenta'].touched && f['precioVenta'].invalid">
+          <div *ngIf="f['precioVenta'].errors?.['required']">El precio de venta es obligatorio.</div>
+          <div *ngIf="f['precioVenta'].errors?.['min']">Mínimo 0.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary">Registrar</button>
+      <button type="button" class="btn" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</section>

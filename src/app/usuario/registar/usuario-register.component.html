@@ -1,0 +1,74 @@
+<section class="usuario-area">
+  <h3>Consultar persona</h3>
+  <form [formGroup]="formularioBusqueda" (ngSubmit)="onBuscarPersona()" class="usuario-form">
+    <div class="row">
+      <div class="field">
+        <label>Tipo de documento</label>
+        <select formControlName="tipoDocumento">
+          <option value="">-- Seleccione --</option>
+          <option *ngFor="let tipoDoc of tiposDocumento" [value]="tipoDoc.id">{{ tipoDoc.nombre }}</option>
+        </select>
+        <div class="error" *ngIf="fbusq['tipoDocumento'].touched && fbusq['tipoDocumento'].invalid">
+          <div *ngIf="fbusq['tipoDocumento'].errors?.['required']">Seleccione un tipo de documento.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Identificación</label>
+        <input type="text" formControlName="identificacion" placeholder="Número de identificación" />
+        <div class="error" *ngIf="fbusq['identificacion'].touched && fbusq['identificacion'].invalid">
+          <div *ngIf="fbusq['identificacion'].errors?.['required']">La identificación es obligatoria.</div>
+          <div *ngIf="fbusq['identificacion'].errors?.['maxlength']">Máximo 30 caracteres.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary">Buscar</button>
+      <button type="button" class="btn" (click)="onLimpiar()">Limpiar</button>
+    </div>
+  </form>
+</section>
+<br>
+<section class="usuario-area">
+  <h3>Crear Usuario</h3>
+  <h5>Usuario creado para: {{ personaBuscada?.nombre }}</h5>
+  <form [formGroup]="formularioUsuario" (ngSubmit)="onSubmit()" class="usuario-form">
+    <div class="row">
+      <div class="field">
+        <label>Usuario</label>
+        <input type="text" formControlName="usuario" placeholder="Usuario" />
+        <div class="error" *ngIf="f['usuario'].touched && f['usuario'].invalid">
+          <div *ngIf="f['usuario'].errors?.['required']">El nombre de usuario es obligatorio.</div>
+          <div *ngIf="f['usuario'].errors?.['maxlength']">Máximo 40 caracteres.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" formControlName="contrasena" placeholder="Contraseña" />
+        <div class="error" *ngIf="f['contrasena'].touched && f['contrasena'].invalid">
+          <div *ngIf="f['contrasena'].errors?.['required']">La contraseña es obligatoria.</div>
+          <div *ngIf="f['contrasena'].errors?.['minlength']">Mínimo 6 caracteres.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Repetir contraseña</label>
+        <input type="password" formControlName="contrasenaRepetir" placeholder="Contraseña" />
+        <div class="error" *ngIf="f['contrasenaRepetir'].touched && f['contrasenaRepetir'].invalid">
+          <div *ngIf="f['contrasenaRepetir'].errors?.['required']">La contraseña es obligatoria.</div>
+          <div *ngIf="f['contrasenaRepetir'].errors?.['minlength']">Mínimo 6 caracteres.</div>
+          <div *ngIf="contrasenasNoCoinciden">Las contraseñas no coinciden.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary">Crear</button>
+      <button type="button" class="btn" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</section>

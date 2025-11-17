@@ -9,16 +9,40 @@
     </div>
 
     <ul class="menu">
-      <li class="menu-item has-sub">
-        <span class="menu-title">Administrar</span>
-        <ul class="submenu">
-          <li>Persona</li>
-          <li>Usuario</li>
+      <li class="menu-item has-sub" [class.open]="openMenu === 'persona'">
+        <span class="menu-title" (click)="toggleMenu('persona', $event)">Persona</span>
+        <ul class="submenu" *ngIf="openMenu === 'persona'">
+          <li (click)="openPersonaRegistrar(); $event.stopPropagation()">Registrar</li>
+          <li (click)="openPersonaEditar(); $event.stopPropagation()">Editar</li>
         </ul>
       </li>
-      <li class="menu-item">Categoría producto</li>
-      <li class="menu-item">Productos</li>
-      <li class="menu-item">Venta</li>
+      <li class="menu-item has-sub" [class.open]="openMenu === 'usuario'">
+        <span class="menu-title" (click)="toggleMenu('usuario', $event)">Usuario</span>
+        <ul class="submenu" *ngIf="openMenu === 'usuario'">
+          <li (click)="openUsuarioRegistrar(); $event.stopPropagation()">Crear</li>
+          <li (click)="openUsuarioEditar(); $event.stopPropagation()">Editar</li>
+        </ul>
+      </li>
+      <li class="menu-item has-sub" [class.open]="openMenu === 'categoria'">
+        <span class="menu-title" (click)="toggleMenu('categoria', $event)">Categoría producto</span>
+        <ul class="submenu" *ngIf="openMenu === 'categoria'">
+          <li (click)="openCategoriaRegistrar(); $event.stopPropagation()">Crear</li>
+          <li (click)="openCategoriaEditar(); $event.stopPropagation()">Editar</li>
+        </ul>
+      </li>
+      <li class="menu-item has-sub" [class.open]="openMenu === 'producto'">
+        <span class="menu-title" (click)="toggleMenu('producto', $event)">Productos</span>
+        <ul class="submenu" *ngIf="openMenu === 'producto'">
+          <li (click)="openProductoRegistrar(); $event.stopPropagation()">Crear</li>
+          <li (click)="openProductoEditar(); $event.stopPropagation()">Editar</li>
+        </ul>
+      </li>
+      <li class="menu-item has-sub" [class.open]="openMenu === 'venta'">
+        <span class="menu-title" (click)="toggleMenu('venta', $event)">Venta</span>
+        <ul class="submenu" *ngIf="openMenu === 'venta'">
+          <li (click)="openVenta(); $event.stopPropagation()">Abrir venta</li>
+        </ul>
+      </li>
       <li class="menu-item">Factura</li>
     </ul>
 
@@ -29,5 +53,46 @@
 
   <main class="content">
     <h2>Bienvenido a Mi tienda, {{ nombreUsuario }}</h2>
+    <app-persona-register *ngIf="showPersonaRegistrar"
+      (saved)="onPersonaSaved()"
+      (cancel)="onPersonaCancel()">
+    </app-persona-register>
+
+    <app-persona-edit *ngIf="showPersonaEditar"
+      (saved)="onPersonaSaved()"
+      (cancel)="onPersonaCancel()">
+    </app-persona-edit>
+    
+    <app-usuario-register *ngIf="showUsuarioRegistrar"
+      (saved)="onUsuarioSaved()"
+      (cancel)="onUsuarioCancel()">
+    </app-usuario-register>
+
+    <app-usuario-edit *ngIf="showUsuarioEditar"
+      (saved)="onUsuarioSaved()"
+      (cancel)="onUsuarioCancel()">
+    </app-usuario-edit>
+    
+    <app-categoria-registrar *ngIf="showCategoriaRegistrar"
+      (saved)="onCategoriaSaved()"
+      (cancel)="onCategoriaCancel()">
+    </app-categoria-registrar>
+
+    <app-categoria-edit *ngIf="showCategoriaEditar"
+      (saved)="onCategoriaSaved()"
+      (cancel)="onCategoriaCancel()">
+    </app-categoria-edit>
+    
+    <app-venta *ngIf="showVenta"></app-venta>
+
+    <app-producto-registrar *ngIf="showProductoRegistrar"
+      (saved)="onProductoSaved($event)"
+      (cancel)="onProductoCancel()">
+    </app-producto-registrar>
+
+    <app-producto-edit *ngIf="showProductoEditar"
+      (saved)="onProductoSaved($event)"
+      (cancel)="onProductoCancel()">
+    </app-producto-edit>
   </main>
 </div>

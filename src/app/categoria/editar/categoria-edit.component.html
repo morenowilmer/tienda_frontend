@@ -1,0 +1,49 @@
+<section class="categoria-area">
+  <h3>Consultar Categoría</h3>
+  <form [formGroup]="formularioConsulta" (ngSubmit)="onConsultar()" class="categoria-form">
+    <div class="row">
+      <div class="field">
+        <label>Nombre</label>
+        <input type="text" formControlName="nombre" placeholder="Ingrese al menos 3 letras para buscar" />
+        <div class="search-results" *ngIf="categoriasEncontradas && categoriasEncontradas.length > 0">
+          <ul class="results-list">
+            <li *ngFor="let c of categoriasEncontradas" class="result-item" (click)="onSeleccionarCategoria(c.id); $event.stopPropagation()">
+              <strong>{{ c.nombre }}</strong><span *ngIf="c.descripcion"> - {{ c.descripcion }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
+<br>
+<section class="categoria-area">
+  <h3>Editar Categoría</h3>
+  <form [formGroup]="formulariocategoria" (ngSubmit)="onGuardar()" class="categoria-form">
+    <div class="row">
+      <div class="field">
+        <label>Nombre</label>
+        <input type="text" formControlName="nombre" placeholder="Nombre de la categoría" />
+        <div class="error" *ngIf="f['nombre'].touched && f['nombre'].invalid">
+          <div *ngIf="f['nombre'].errors?.['required']">El nombre es obligatorio.</div>
+          <div *ngIf="f['nombre'].errors?.['maxlength']">Máximo 70 caracteres.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Descripción</label>
+        <textarea formControlName="descripcion" placeholder="Descripción (opcional)"></textarea>
+        <div class="error" *ngIf="f['descripcion'].touched && f['descripcion'].invalid">
+          <div *ngIf="f['descripcion'].errors?.['maxlength']">Máximo 250 caracteres.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary">Guardar</button>
+      <button type="button" class="btn" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</section>

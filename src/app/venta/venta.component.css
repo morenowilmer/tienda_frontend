@@ -1,0 +1,142 @@
+.venta-area {
+    margin-top: 1rem;
+    background: #fff;
+    border: 1px solid #eef6ff;
+    padding: 1rem;
+    border-radius: 8px
+}
+
+.buscador {
+    margin-bottom: 0.8rem
+}
+
+.buscador input {
+    width: 60%;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid #d7e7fb;
+    border-radius: 6px
+}
+
+.fila-producto {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.8rem
+}
+
+.fila-producto label {
+    font-weight: 600
+}
+
+.fila-producto input {
+    padding: 0.45rem 0.6rem;
+    border: 1px solid #d7e7fb;
+    border-radius: 6px
+}
+
+.tabla-carrito {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.8rem
+}
+
+.tabla-carrito th,
+.tabla-carrito td {
+    border: 1px solid #e6eef8;
+    padding: 0.6rem;
+    text-align: left
+}
+
+.results-list {
+    list-style: none;
+    margin: 0.25rem 0 0;
+    padding: 0;
+    border: 1px solid #e6eef8;
+    border-radius: 6px;
+    max-height: 160px;
+    overflow: auto
+}
+
+.results-list li {
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    border-bottom: 1px solid #f1f5ff
+}
+
+.results-list li:hover {
+    background: #eef6ff
+}
+
+.resumen {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 0.6rem
+}
+
+.total-label {
+    font-weight: 600
+}
+
+.total-value {
+    min-width: 120px;
+    padding: 0.5rem;
+    border: 1px solid #e6eef8;
+    border-radius: 6px;
+    text-align: right
+}
+
+.acciones {
+    margin-top: 0.8rem
+}
+
+.btn {
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid #d0e6ff;
+    background: #f3f9ff;
+    cursor: pointer
+}
+
+.btn.primary {
+    background: #1273e6;
+    color: #fff;
+    border: none
+}
+
+.venta-form .row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.venta-form .field {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.venta-form label {
+    font-weight: 600;
+    margin-bottom: 0.2rem
+}
+
+.venta-form input,
+.venta-form select {
+    padding: 0.45rem 0.6rem;
+    border: 1px solid #d7e7fb;
+    border-radius: 6px;
+}
+
+.venta-form .error {
+    color: #c62828;
+    font-size: 0.85rem;
+    margin-top: 0.25rem
+}
+
+.venta-form .actions {
+    margin-top: 0.6rem;
+    display: flex;
+    gap: 0.6rem
+}

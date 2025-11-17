@@ -1,0 +1,69 @@
+<section class="usuario-area">
+  <h3>Buscar Usuario</h3>
+  <form [formGroup]="formularioBusqueda" (ngSubmit)="onBuscarUsuario()" class="usuario-form">
+    <div class="row">
+      <div class="field">
+        <label>Usuario</label>
+        <input type="text" formControlName="usuario" placeholder="Usuario" />
+        <div class="error" *ngIf="f['usuario'].touched && f['usuario'].invalid">
+          <div *ngIf="f['usuario'].errors?.['required']">El usuario es obligatorio.</div>
+          <div *ngIf="f['usuario'].errors?.['maxlength']">Máximo 40 caracteres.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary">Buscar</button>
+    </div>
+  </form>
+</section>
+<br>
+<section class="usuario-area">
+  <h3>Editar Usuario</h3>
+  <h5>Persona: {{ personaUsuario?.nombre }} {{ personaUsuario?.apellido }}</h5>
+  <form [formGroup]="formularioUsuario" (ngSubmit)="onGuardar()" class="usuario-form">
+    <div class="row">
+      <div class="field">
+        <label>Usuario</label>
+        <input type="text" formControlName="usuario" placeholder="Usuario" />
+      </div>
+
+      <div class="field">
+        <label>Estado</label>
+        <select formControlName="estado">
+          <option value="">-- Seleccione --</option>
+          <option *ngFor="let estado of estados" [value]="estado.valor">{{ estado.nombre }}</option>
+        </select>
+        <div class="error" *ngIf="f['estado'].touched && f['estado'].invalid">
+          <div *ngIf="f['estado'].errors?.['required']">Seleccione un estado.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" formControlName="contrasena" placeholder="Contraseña" />
+        <div class="error" *ngIf="f['contrasena'].touched && f['contrasena'].invalid">
+          <div *ngIf="f['contrasena'].errors?.['required']">La contraseña es obligatoria.</div>
+          <div *ngIf="f['contrasena'].errors?.['minlength']">Mínimo 6 caracteres.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Repetir contraseña</label>
+        <input type="password" formControlName="contrasenaRepetir" placeholder="Contraseña" />
+        <div class="error" *ngIf="f['contrasenaRepetir'].touched && f['contrasenaRepetir'].invalid">
+          <div *ngIf="f['contrasenaRepetir'].errors?.['required']">La contraseña es obligatoria.</div>
+          <div *ngIf="f['contrasenaRepetir'].errors?.['minlength']">Mínimo 6 caracteres.</div>
+          <div *ngIf="contrasenasNoCoinciden">Las contraseñas no coinciden.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary">Guardar</button>
+      <button type="button" class="btn" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</section>
