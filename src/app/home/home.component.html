@@ -37,7 +37,12 @@
           <li (click)="openProductoEditar(); $event.stopPropagation()">Editar</li>
         </ul>
       </li>
-      <li class="menu-item">Venta</li>
+      <li class="menu-item has-sub" [class.open]="openMenu === 'venta'">
+        <span class="menu-title" (click)="toggleMenu('venta', $event)">Venta</span>
+        <ul class="submenu" *ngIf="openMenu === 'venta'">
+          <li (click)="openVenta(); $event.stopPropagation()">Abrir venta</li>
+        </ul>
+      </li>
       <li class="menu-item">Factura</li>
     </ul>
 
@@ -77,6 +82,8 @@
       (saved)="onCategoriaSaved()"
       (cancel)="onCategoriaCancel()">
     </app-categoria-edit>
+    
+    <app-venta *ngIf="showVenta"></app-venta>
 
     <app-producto-registrar *ngIf="showProductoRegistrar"
       (saved)="onProductoSaved($event)"

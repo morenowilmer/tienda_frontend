@@ -9,6 +9,7 @@ import { CategoriaRegistrarComponent } from '../categoria/registrar/categoria-re
 import { CategoriaEditComponent } from '../categoria/editar/categoria-edit.component';
 import { ProductoRegistrarComponent } from '../producto/registrar/producto-registrar.component';
 import { ProductoEditComponent } from '../producto/editar/producto-edit.component';
+import { VentaComponent } from '../venta/venta.component';
 import { Router } from '@angular/router';
 import { NotificationService } from '../core/services/notification.service';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -16,8 +17,8 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 @Component({
   standalone: true,
   selector: 'app-home',
-  imports: [CommonModule, PersonaRegisterComponent, PersonaEditComponent, UsuarioRegisterComponent, UsuarioEditComponent, 
-    CategoriaRegistrarComponent, CategoriaEditComponent, ProductoRegistrarComponent, ProductoEditComponent],
+    imports: [CommonModule, PersonaRegisterComponent, PersonaEditComponent, UsuarioRegisterComponent, UsuarioEditComponent, 
+      CategoriaRegistrarComponent, CategoriaEditComponent, ProductoRegistrarComponent, ProductoEditComponent, VentaComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
@@ -32,6 +33,7 @@ export class HomeComponent implements OnInit {
   showCategoriaEditar = false;
   showProductoRegistrar = false;
   showProductoEditar = false;
+  showVenta = false;
 
   constructor(
     private router: Router,
@@ -138,6 +140,18 @@ export class HomeComponent implements OnInit {
     this.showPersonaRegistrar = false;
     this.showCategoriaRegistrar = false;
     this.showCategoriaEditar = false;
+  }
+
+  openVenta(): void {
+    this.showVenta = true;
+    this.showProductoRegistrar = false;
+    this.showProductoEditar = false;
+    this.showCategoriaRegistrar = false;
+    this.showCategoriaEditar = false;
+    this.showPersonaRegistrar = false;
+    this.showPersonaEditar = false;
+    this.showUsuarioRegistrar = false;
+    this.showUsuarioEditar = false;
   }
 
   toggleMenu(menu: string, event: MouseEvent): void {

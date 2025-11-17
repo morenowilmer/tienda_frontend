@@ -11,11 +11,16 @@ export class ProductoService {
   constructor(private http: HttpClient) {}
 
   guardarProducto(producto: Producto): Observable<ApiResponse<Producto>> {
-    return this.http.post<ApiResponse<Producto>>(`${this.apiUrl}/producto/guardar`, producto);
+    return this.http.post<ApiResponse<Producto>>(
+      `${this.apiUrl}/producto/guardar`,
+      producto
+    );
   }
 
   consultarProducto(id: any): Observable<ApiResponse<any>> {
-    return this.http.get<ApiResponse<any>>(`${this.apiUrl}/producto/consultar/${id}`);
+    return this.http.get<ApiResponse<any>>(
+      `${this.apiUrl}/producto/consultar/${id}`
+    );
   }
 
   listarProductos(): Observable<ApiResponse<any[]>> {
@@ -23,6 +28,14 @@ export class ProductoService {
   }
 
   consultarProductoNombre(nombre: string): Observable<ApiResponse<Producto[]>> {
-      return this.http.get<ApiResponse<Producto[]>>(`${this.apiUrl}/producto/consultar/nombre/${nombre}`);
-    }
+    return this.http.get<ApiResponse<Producto[]>>(
+      `${this.apiUrl}/producto/consultar/nombre/${nombre}`
+    );
+  }
+
+  consultarProductoId(id: number): Observable<ApiResponse<Producto>> {
+    return this.http.get<ApiResponse<Producto>>(
+      `${this.apiUrl}/producto/buscar/id/${id}`
+    );
+  }
 }
