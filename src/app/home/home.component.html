@@ -43,7 +43,12 @@
           <li (click)="openVenta(); $event.stopPropagation()">Abrir venta</li>
         </ul>
       </li>
-      <li class="menu-item">Factura</li>
+      <li class="menu-item has-sub" [class.open]="openMenu === 'factura'">
+        <span class="menu-title" (click)="toggleMenu('factura', $event)">Factura</span>
+        <ul class="submenu" *ngIf="openMenu === 'factura'">
+          <li (click)="openFactura(); $event.stopPropagation()">Buscar factura</li>
+        </ul>
+      </li>
     </ul>
 
     <div class="right">
@@ -84,6 +89,7 @@
     </app-categoria-edit>
     
     <app-venta *ngIf="showVenta"></app-venta>
+    <app-factura *ngIf="showFactura"></app-factura>
 
     <app-producto-registrar *ngIf="showProductoRegistrar"
       (saved)="onProductoSaved($event)"

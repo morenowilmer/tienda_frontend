@@ -1,0 +1,120 @@
+.factura-area {
+    margin-top: 1rem;
+    background: #fff;
+    border: 1px solid #eef6ff;
+    padding: 1rem;
+    border-radius: 8px
+}
+
+.factura-form .row {
+    display: flex;
+    gap: 1rem;
+    align-items: end
+}
+
+.factura-form .field {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column
+}
+
+.factura-form label {
+    font-weight: 600;
+    margin-bottom: 0.25rem
+}
+
+.factura-form select,
+.factura-form input {
+    padding: 0.45rem 0.6rem;
+    border: 1px solid #d7e7fb;
+    border-radius: 6px
+}
+
+.persona-card {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    border: 1px solid #e6eef8;
+    border-radius: 6px;
+    background: #fbfdff
+}
+
+.btn {
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid #d0e6ff;
+    background: #f3f9ff;
+    cursor: pointer
+}
+
+.btn.primary {
+    background: #1273e6;
+    color: #fff;
+    border: none
+}
+
+.xml-viewers {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem
+}
+
+.xml-tree {
+    flex: 1;
+    max-height: 360px;
+    overflow: auto;
+    background: #fbfdff;
+    border: 1px solid #e6eef8;
+    padding: 0.5rem;
+    border-radius: 6px
+}
+
+.xml-tree ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 1rem;
+    border-left: 1px dashed #e0eaf7
+}
+
+.xml-tree li {
+    margin: 0.25rem 0;
+}
+
+.node-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    font-family: monospace;
+    font-size: 0.95rem
+}
+
+.node-name {
+    color: #0b61c6
+}
+
+.node-attrs .attr {
+    color: #6b6b6b;
+    margin-left: 0.25rem
+}
+
+.node-text {
+    color: #111
+}
+
+.no-xml {
+    color: #888;
+    font-style: italic
+}
+
+.xml-pre {
+    background: #f7fbff;
+    padding: 0.5rem;
+    border: 1px solid #e6eef8;
+    border-radius: 6px;
+    max-height: 360px;
+    overflow: auto
+}
+
+.xml-raw {
+    width: 100%;
+    height: 360px
+}

@@ -59,6 +59,7 @@
     font-weight: 600;
     transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
 }
+
 .logout:hover {
     background: #ffffff;
     box-shadow: 0 10px 30px rgba(7, 36, 58, 0.12);
@@ -80,7 +81,12 @@
     align-items: center;
 }
 
-.submenu, .menu ul { list-style: none; margin: 0; padding: 0 }
+.submenu,
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
 
 .menu-item {
     position: relative;
@@ -151,7 +157,7 @@
     border: 1px solid #e6eef8;
     padding: 1rem;
     border-radius: 8px;
-    box-shadow: 0 6px 18px rgba(10,20,40,0.04);
+    box-shadow: 0 6px 18px rgba(10, 20, 40, 0.04);
 }
 
 .persona-form .row {
@@ -166,16 +172,43 @@
     flex-direction: column;
 }
 
-.persona-form label { font-weight: 600; margin-bottom: 0.2rem }
-.persona-form input, .persona-form select {
+.persona-form label {
+    font-weight: 600;
+    margin-bottom: 0.2rem
+}
+
+.persona-form input,
+.persona-form select {
     padding: 0.45rem 0.6rem;
     border: 1px solid #d7e7fb;
     border-radius: 6px;
 }
-.persona-form .error { color: #c62828; font-size: 0.85rem; margin-top: 0.25rem }
-.persona-form .actions { margin-top: 0.6rem; display:flex; gap:0.6rem }
-.btn { padding: 0.5rem 0.8rem; border-radius:6px; border:1px solid #d0e6ff; background:#f3f9ff; cursor:pointer }
-.btn.primary { background:#1273e6; color:#fff; border:none }
+
+.persona-form .error {
+    color: #c62828;
+    font-size: 0.85rem;
+    margin-top: 0.25rem
+}
+
+.persona-form .actions {
+    margin-top: 0.6rem;
+    display: flex;
+    gap: 0.6rem
+}
+
+.btn {
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid #d0e6ff;
+    background: #f3f9ff;
+    cursor: pointer
+}
+
+.btn.primary {
+    background: #1273e6;
+    color: #fff;
+    border: none
+}
 
 @media (max-width:800px) {
     .menu {
