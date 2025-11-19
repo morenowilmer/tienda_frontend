@@ -1,3 +1,3 @@
 export const environment = {
-    urlApi: 'http://localhost:8090/rest/v1.0/tienda'
+    urlApi: 'http://tienda-backend-pro.eba-iukkw2mk.us-east-1.elasticbeanstalk.com/rest/v1.0/tienda'
 };
