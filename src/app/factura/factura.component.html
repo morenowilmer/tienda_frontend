@@ -1,0 +1,93 @@
+<section class="factura-area">
+    <h3>Factura - Buscar Cliente</h3>
+    <form [formGroup]="formularioBusquedaPersona" (ngSubmit)="buscarPersona()" class="factura-form">
+        <div class="row">
+            <div class="field">
+                <label>Tipo documento</label>
+                <select formControlName="tipoDocumento">
+                    <option value="">-- Seleccione --</option>
+                    <option *ngFor="let t of tiposDocumento" [value]="t.id">{{t.nombre}}</option>
+                </select>
+                <div class="error" *ngIf="fbp['tipoDocumento'].touched && fbp['tipoDocumento'].invalid">
+                    <div *ngIf="fbp['tipoDocumento'].errors?.['required']">Seleccione un tipo de documento.</div>
+                </div>
+            </div>
+            <div class="field">
+                <label>Identificación</label>
+                <input formControlName="identificacion" placeholder="Número o documento" />
+                <div class="error" *ngIf="fbp['identificacion'].touched && fbp['identificacion'].invalid">
+                    <div *ngIf="fbp['identificacion'].errors?.['required']">La identificación es obligatoria.</div>
+                    <div *ngIf="fbp['identificacion'].errors?.['maxlength']">Máximo 30 caracteres.</div>
+                </div>
+            </div>
+            <div class="field actions">
+                <button type="submit" class="btn primary">Buscar</button>
+            </div>
+        </div>
+    </form>
+
+    <div *ngIf="personaEncontrada" class="persona-card">
+        <h4>Datos cliente</h4>
+        <p><strong>Nombre:</strong> {{personaEncontrada.nombre}} {{personaEncontrada.apellido}}</p>
+        <p><strong>Identificación:</strong> {{personaEncontrada.identificacion}}</p>
+    </div>
+</section>
+<br>
+<section class="factura-area" *ngIf="facturasCliente?.length">
+    <h3>Facturas Cliente</h3>
+    <form [formGroup]="formularioBusquedaFactura" (ngSubmit)="buscarFacturaXml()" class="factura-form">
+        <div class="row">
+            <div class="field">
+                <label>Seleccione la factura del cliente</label>
+                <select formControlName="idFactura">
+                    <option value="">-- Seleccione --</option>
+                    <option *ngFor="let f of facturasCliente" [value]="f.id">{{f.id}} - fecha: {{f.fechaCompra}} -
+                        Total: {{f.totalFactura}}</option>
+                </select>
+                <div class="error" *ngIf="fbf['idFactura'].touched && fbf['idFactura'].invalid">
+                    <div *ngIf="fbf['idFactura'].errors?.['required']">Seleccione una factura.</div>
+                </div>
+            </div>
+            <div class="field actions">
+                <button type="submit" class="btn primary">Mostrar Factura</button>
+            </div>
+        </div>
+
+        <div class="xml-viewers" *ngIf="xmlGenerated">
+            <div class="viewer">
+                <h4>Vista formateada</h4>
+                <pre class="xml-pre">{{ prettyXml }}</pre>
+            </div>
+            <div class="viewer">
+                <h4>XML (árbol)</h4>
+                <div class="xml-tree" *ngIf="parsedXml.length; else noXml">
+                    <ul>
+                        <ng-template #nodeTpl let-node>
+                            <li>
+                                <div class="node-row">
+                                    <span class="node-name">&lt;{{ node.name }}&gt;</span>
+                                    <span class="node-attrs" *ngIf="node.attributes?.length">
+                                        <span *ngFor="let a of node.attributes" class="attr"> {{a.name}}="{{a.value}}"</span>
+                                    </span>
+                                    <span class="node-text" *ngIf="node.text">: {{ node.text }}</span>
+                                </div>
+                                <ul *ngIf="node.children?.length">
+                                    <ng-container *ngFor="let c of node.children">
+                                        <ng-container *ngTemplateOutlet="nodeTpl; context: { $implicit: c }"></ng-container>
+                                    </ng-container>
+                                </ul>
+                            </li>
+                        </ng-template>
+
+                        <ng-container *ngFor="let root of parsedXml">
+                            <ng-container *ngTemplateOutlet="nodeTpl; context: { $implicit: root }"></ng-container>
+                        </ng-container>
+                    </ul>
+                </div>
+                <ng-template #noXml>
+                    <div class="no-xml">No hay XML para mostrar</div>
+                </ng-template>
+            </div>
+        </div>
+    </form>
+</section>

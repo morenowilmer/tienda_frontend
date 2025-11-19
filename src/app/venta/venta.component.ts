@@ -197,6 +197,7 @@ export class VentaComponent implements OnInit, OnDestroy {
 
   guardarCompra(): void {
     const factura: Factura = {
+      id: null,
       idPersona: this.personaCompradora?.id || null,
       totalVenta: this.carrito.reduce((s, it) => s + (it.sinImpuestos || 0), 0),
       totalImpuesto: this.carrito.reduce(
@@ -204,7 +205,9 @@ export class VentaComponent implements OnInit, OnDestroy {
         0
       ),
       totalFactura: this.getTotal(),
+      fechaCompra: null,
       detallesFactura: this.carrito.map((item) => ({
+        id: null,
         idProducto: item.productoId,
         totalItems: item.cantidad,
         precioProducto: item.valor,

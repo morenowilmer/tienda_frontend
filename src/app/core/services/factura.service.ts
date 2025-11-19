@@ -14,6 +14,21 @@ export class FacturaService {
   constructor(private http: HttpClient) {}
 
   guardarFactura(factura: Factura): Observable<ApiResponse<Factura>> {
-      return this.http.post<ApiResponse<Factura>>(`${this.apiUrl}/factura/guardar`, factura);
-    }
+    return this.http.post<ApiResponse<Factura>>(
+      `${this.apiUrl}/factura/guardar`,
+      factura
+    );
+  }
+
+  consultarFacturaCliente(idPersona: number): Observable<ApiResponse<Factura>> {
+    return this.http.get<ApiResponse<Factura>>(
+      `${this.apiUrl}/factura/consultar/cliente/${idPersona}`
+    );
+  }
+
+  consultarFacturaXml(idFactura: string): Observable<ApiResponse<string>> {
+    return this.http.get<ApiResponse<string>>(
+      `${this.apiUrl}/factura/xml/${idFactura}`
+    );
+  }
 }

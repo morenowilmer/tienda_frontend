@@ -10,6 +10,7 @@ import { CategoriaEditComponent } from '../categoria/editar/categoria-edit.compo
 import { ProductoRegistrarComponent } from '../producto/registrar/producto-registrar.component';
 import { ProductoEditComponent } from '../producto/editar/producto-edit.component';
 import { VentaComponent } from '../venta/venta.component';
+import { FacturaComponent } from '../factura/factura.component';
 import { Router } from '@angular/router';
 import { NotificationService } from '../core/services/notification.service';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,7 +19,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
   standalone: true,
   selector: 'app-home',
     imports: [CommonModule, PersonaRegisterComponent, PersonaEditComponent, UsuarioRegisterComponent, UsuarioEditComponent, 
-      CategoriaRegistrarComponent, CategoriaEditComponent, ProductoRegistrarComponent, ProductoEditComponent, VentaComponent],
+      CategoriaRegistrarComponent, CategoriaEditComponent, ProductoRegistrarComponent, ProductoEditComponent, VentaComponent, FacturaComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
@@ -34,6 +35,7 @@ export class HomeComponent implements OnInit {
   showProductoRegistrar = false;
   showProductoEditar = false;
   showVenta = false;
+  showFactura = false;
 
   constructor(
     private router: Router,
@@ -63,6 +65,8 @@ export class HomeComponent implements OnInit {
     this.showCategoriaEditar = false;
     this.showProductoEditar = false;
     this.showProductoRegistrar = false;
+    this.showFactura = false;
+    this.showVenta = false;
   }
 
   openPersonaEditar(): void {
@@ -74,6 +78,8 @@ export class HomeComponent implements OnInit {
     this.showCategoriaEditar = false;
     this.showProductoEditar = false;
     this.showProductoRegistrar = false;
+    this.showFactura = false;
+    this.showVenta = false;
   }
 
   openUsuarioRegistrar(): void {
@@ -85,6 +91,8 @@ export class HomeComponent implements OnInit {
     this.showCategoriaEditar = false;
     this.showProductoEditar = false;
     this.showProductoRegistrar = false;
+    this.showFactura = false;
+    this.showVenta = false;
   }
 
   openUsuarioEditar(): void {
@@ -96,6 +104,8 @@ export class HomeComponent implements OnInit {
     this.showCategoriaEditar = false;
     this.showProductoEditar = false;
     this.showProductoRegistrar = false;
+    this.showFactura = false;
+    this.showVenta = false;
   }
 
   openCategoriaRegistrar(): void {
@@ -107,6 +117,8 @@ export class HomeComponent implements OnInit {
     this.showPersonaRegistrar = false;
     this.showProductoEditar = false;
     this.showProductoRegistrar = false;
+    this.showFactura = false;
+    this.showVenta = false;
   }
 
   openCategoriaEditar(): void {
@@ -118,6 +130,8 @@ export class HomeComponent implements OnInit {
     this.showPersonaRegistrar = false;
     this.showProductoEditar = false;
     this.showProductoRegistrar = false;
+    this.showFactura = false;
+    this.showVenta = false;
   }
 
   openProductoRegistrar(): void {
@@ -129,6 +143,8 @@ export class HomeComponent implements OnInit {
     this.showPersonaRegistrar = false;
     this.showCategoriaRegistrar = false;
     this.showCategoriaEditar = false;
+    this.showFactura = false;
+    this.showVenta = false;
   }
 
   openProductoEditar(): void {
@@ -140,10 +156,26 @@ export class HomeComponent implements OnInit {
     this.showPersonaRegistrar = false;
     this.showCategoriaRegistrar = false;
     this.showCategoriaEditar = false;
+    this.showFactura = false;
+    this.showVenta = false;
   }
 
   openVenta(): void {
     this.showVenta = true;
+    this.showFactura = false;
+    this.showProductoRegistrar = false;
+    this.showProductoEditar = false;
+    this.showCategoriaRegistrar = false;
+    this.showCategoriaEditar = false;
+    this.showPersonaRegistrar = false;
+    this.showPersonaEditar = false;
+    this.showUsuarioRegistrar = false;
+    this.showUsuarioEditar = false;
+  }
+
+  openFactura(): void {
+    this.showFactura = true;
+    this.showVenta = false;
     this.showProductoRegistrar = false;
     this.showProductoEditar = false;
     this.showCategoriaRegistrar = false;
